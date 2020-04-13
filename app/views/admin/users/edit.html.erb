@@ -1,0 +1,7 @@
+<%= content_for :title, mutation_form.create? ? t('.title_new') : t('.title_edit') %>
+
+<%= ajax_modal_form do |form| %>
+  <%= form.text_field :email, hide_label: true, placeholder: t('activerecord.users.email') %>
+  <%= form.text_field :fname, hide_label: true, placeholder: t('activerecord.users.fname') %>
+  <%= form.text_field :lname, hide_label: true, placeholder: t('activerecord.users.lname') %>
+<% end %>

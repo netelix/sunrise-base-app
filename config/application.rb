@@ -15,5 +15,15 @@ module SunriseBaseApp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    # Permitted locales available for the application
+    I18n.available_locales = [:en, :fr, :es]
+
+    # Set default locale to something other than :en
+    I18n.default_locale = :fr
+
+    config.app_name = 'Sunrise Base App'
+    config.app_production_host = 'www.sunrise-base-app.io'
+    config.token_secret = "OsoooLEBàCe'est_usdQSDqdsdfqnsecre!!!"
+
   end
 end

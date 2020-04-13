@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-12">
+    <%= link_to_modal fa_icon('plus', {class: 'btn btn-primary btn-xs float-right'}), new_admin_user_path %>
+
+    <h1 class="h2 d-inline-block"><%= t('admin.nav.users') %></h1>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <tbody>
+    <% users.each do |user| %>
+      <tr class="cursor-pointor">
+        <td><%= user.email %></td>
+        <td><%= user.lname %></td>
+        <td><%= user.fname %></td>
+        <td class="text-right">
+          <%= link_to_modal t('admin.edit'), edit_admin_user_path(user), class:'mr-2' %>
+          <%= button_to_delete fa_icon('trash'), admin_user_path(user), class: 'text-danger border-0 p-0 bg-transparent', form_class:'d-inline' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate users %>

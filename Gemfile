@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4'
+gem 'sidekiq'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -49,14 +50,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
-end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -83,7 +76,34 @@ group :development, :test do
 end
 
 group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+  gem 'codacy-coverage', require: false # for reporting test coverage
+  gem 'launchy' # to open screenshots
+  gem 'rails-controller-testing' # Brings back `assigns` and `assert_template`
+  gem 'rspec_junit_formatter' # Formatted used for CircleCI
+  gem 'rspec-retry' # some specs fail randomly in CI
+  gem 'simplecov', require: false # test coverage
+  gem 'timecop' # to test time-dependent code
+  gem 'vcr' # record and replay HTTP interactions
+  gem 'webmock' # needed for VCR
+  gem 'whenever-test' # testing support for whenever gem
   gem 'database_cleaner'
-  gem 'launchy'
+  gem 'capybara-email'
 end
 
+gem 'devise'
+gem 'devise-i18n'
+gem 'kaminari'
+gem 'route_translator'
+gem 'browser'
+gem 'font-awesome-rails'
+gem 'mutations'
+gem 'bootstrap_form', '~> 4.0'
+gem 'i18n'
+gem 'rails-i18n', '~> 5.1'
+gem 'cancancan'
+gem 'jquery-ui-rails'
+gem 'sunrise', path: '~/sunrise/sunrise'

@@ -10,7 +10,44 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
+//= require jquery3
+//= require popper
+//= require jquery_ujs
+//= require jquery-ui
+//= require bootstrap
 //= require turbolinks
-//= require_tree .
+//= require clickable.js
+//= require summernote/summernote-bs4
+//= require summernote/summernote-cleaner
+
+//= require ajax_modal.js
+//= require descriptions.js
+//= require deferred_images.js
+//= require copy_to_clipboard.js
+
+
+//$.fancybox.defaults.hash = false;
+
+;(function () {
+  var scrollPosition
+  document.addEventListener('turbolinks:load', function () {
+    if (scrollPosition) {
+      window.scrollTo(0, scrollPosition[1]);
+      scrollPosition = null
+    }
+  }, false)
+
+  Turbolinks.reload = function () {
+    scrollPosition = [window.scrollX, window.scrollY]
+    Turbolinks.visit(window.location, { action: 'replace' })
+  }
+})()
+
+function onTableRowClick(event, el) {
+  if (event.target.nodeName == "A" || event.target.nodeName == "BUTTON") {
+    return false;
+  } else if ($(el).find("a.main-link:not([data-modal])").length) {
+    Turbolinks.visit($(el).find(".main-link").attr("href"));
+  }
+}
