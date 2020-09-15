@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## PRETTIER
 
-Things you may want to cover:
+* install prettier and prettier-ruby with npm : 
+```
+npm install prettier
+npm install --save-dev prettier @prettier/plugin-ruby
+```
 
-* Ruby version
+* open RubyMine preferences : Languages & Frameworks > Javascript > Prettier
 
-* System dependencies
+Select prettier package `~/yourproject/web/node_modules/prettier`
 
-* Configuration
+* Create a `~/yourproject/.prettierrc` file with
 
-* Database creation
+```
+{
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": { "parser": "json" }
+    },
+    {
+      "files": "*.rb",
+      "options": { "parser": "ruby" }
+    }
+  ]
+}
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
